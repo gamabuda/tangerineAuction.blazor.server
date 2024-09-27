@@ -1,0 +1,53 @@
+﻿@page "/"
+@inject GeneratorStub GeneratorStub
+
+@if (_showAuthModal)
+{
+    <AuthModal OnClose="CloseAuthModal" />
+}
+
+@if (_showAuctItemModal)
+{
+    <AuctionItemModal Auction="_auction" OnClose="CloseAuctItemModal" />
+}
+<div class="page-container">
+    <NavComponent OpenAuthModal="OpenAuthModal" />
+
+    <div class="content">
+        <ProductCardList OnCardClick="OpenAuctItemModal" />
+    </div>
+
+    <FooterComponent />
+</div>
+
+
+@code {
+    private Auction _auction = null;
+    private bool _showAuthModal = false;
+    private bool _showAuctItemModal = false;
+
+    public void CloseAuthModal()
+    {
+        _showAuthModal = false;
+        StateHasChanged();
+    }
+
+    public void OpenAuthModal()
+    {
+        _showAuthModal = true;
+        StateHasChanged();
+    }
+
+    public void CloseAuctItemModal()
+    {
+        _showAuctItemModal = false;
+        StateHasChanged();
+    }
+
+    public void OpenAuctItemModal(Auction auction)
+    {
+        _auction = auction;
+        _showAuctItemModal = true;
+        StateHasChanged();
+    }
+}

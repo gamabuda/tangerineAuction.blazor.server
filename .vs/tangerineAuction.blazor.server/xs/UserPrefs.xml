@@ -1,0 +1,54 @@
+﻿<Properties StartupConfiguration="{CBA77CA3-0DC9-4761-A66B-FD64D9166A90}|https">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.tangerineAuction.blazor.server PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="tangerineAuction.blazor.server/Shared/ProgressComponent.razor">
+    <Files>
+      <File FileName="tangerineAuction.blazor.server/Pages/Index.razor" />
+      <File FileName="tangerineAuction.blazor.server/Shared/NavComponent.razor" />
+      <File FileName="tangerineAuction.blazor.server/Shared/FooterComponent.razor" Line="19" Column="64" />
+      <File FileName="tangerineAuction.blazor.server/Modal/AuthModal.razor" />
+      <File FileName="tangerineAuction.blazor.server/_Imports.razor" />
+      <File FileName="tangerineAuction.blazor.server/Pages/_Host.cshtml" />
+      <File FileName="tangerineAuction.blazor.server/wwwroot/css/site.css" />
+      <File FileName="tangerineAuction.blazor.server/Shared/ProductCard.razor" Line="4" Column="5" />
+      <File FileName="tangerineAuction.blazor.server/Shared/ProgressComponent.razor" Line="28" Column="1" />
+      <File FileName="tangerineAuction.blazor.server/Shared/ProductCardList.razor" />
+      <File FileName="tangerineAuction.blazor.server/Data/UserAccount.cs" />
+      <File FileName="tangerineAuction.blazor.server/Service/GeneratorStub.cs" />
+      <File FileName="tangerineAuction.blazor.server/Service/UserService.cs" />
+      <File FileName="tangerineAuction.blazor.server/Program.cs" Line="11" Column="30" />
+      <File FileName="tangerineAuction.blazor.server/Data/AuctionItem.cs" Line="8" Column="156" />
+      <File FileName="tangerineAuction.blazor.server/Data/Bid.cs" Line="1" Column="1" />
+      <File FileName="tangerineAuction.blazor.server/Data/Auction.cs" />
+      <File FileName="tangerineAuction.blazor.server/Service/AuctionService.cs" Line="82" Column="65" />
+      <File FileName="tangerineAuction.blazor.server/Modal/AuctionItemModal.razor" Line="60" Column="58" />
+      <File FileName="tangerineAuction.blazor.server/appsettings.json" Line="8" Column="23" />
+      <File FileName="tangerineAuction.blazor.server/Service/MailSenderService.cs" Line="17" Column="43" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="tangerineAuction.blazor.server" expanded="True">
+            <Node name="tangerineAuction.blazor.server" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Modal" expanded="True" />
+              <Node name="Pages" expanded="True" />
+              <Node name="Service" expanded="True" />
+              <Node name="Shared" expanded="True">
+                <Node name="ProgressComponent.razor" selected="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

@@ -1,0 +1,60 @@
+﻿@inject AuctionService AuctionService
+
+<div class="container w-100 mt-2 mb-2">
+    <h1 class="text-center">До появления нового лота осталось: @TimeLeft</h1>
+    <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="@($"width:{(int)((double)_timeLeft.Minutes / 60 * 100)}%;")"></div>
+    </div>
+</div>
+
+@code {
+    private Timer _timer;
+    private TimeSpan _timeLeft;
+    private bool _auctionAdded = false;
+    private const int OneHourInMilliseconds = 3600000;
+    private string TimeLeft => $"{_timeLeft.Hours:D2}:{_timeLeft.Minutes:D2}:{_timeLeft.Seconds:D2}";
+
+    protected override void OnInitialized()
+    {
+        _timer = new Timer(UpdateTime, null, 0, 1000);
+        UpdateTime(null);
+    }
+
+    private void UpdateTime(object state)
+    {
+        var now = DateTime.UtcNow;
+        var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, DateTimeKind.Utc).AddHours(1);
+        _timeLeft = nextHour - now;
+
+        if (_timeLeft.TotalSeconds <= 0 && !_auctionAdded)
+        {
+            AddNewAuctionItem();
+            _auctionAdded = true; 
+        }
+
+        if (_timeLeft.TotalSeconds > 3599)
+        {
+            _auctionAdded = false;
+        }
+
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void AddNewAuctionItem()
+    {
+        var now = DateTime.UtcNow;
+
+        var newItem = new AuctionItem
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = $"Мандаринка #{AuctionService.Auctions.Count + 1}",
+            Description = "Уникальная NFT-картинка мандаринки, символизирующая свежесть.",
+            StartingPrice = 0,
+            CurrentPrice = 0,
+            EndTime = new DateTime(now.Year, now.Month, now.Day).AddDays(1)
+        };
+
+        AuctionService.CreateAuction(newItem);
+    }
+}
+

@@ -1,0 +1,65 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = tangerineAuction.blazor.server
+build_property.RootNamespace = tangerineAuction.blazor.server
+build_property.ProjectDir = /Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Modal/AuctionItemModal.razor]
+build_metadata.AdditionalFiles.TargetPath = TW9kYWwvQXVjdGlvbkl0ZW1Nb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Modal/AuthModal.razor]
+build_metadata.AdditionalFiles.TargetPath = TW9kYWwvQXV0aE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Shared/FooterComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0Zvb3RlckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Shared/NavComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdkNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Shared/ProductCard.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Shared/ProductCardList.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RDYXJkTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Shared/ProgressComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2dyZXNzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/danilkarpov/Projects/tangerineAuction.blazor.server/tangerineAuction.blazor.server/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

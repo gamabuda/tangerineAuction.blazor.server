@@ -1,0 +1,77 @@
+﻿@inject UserService UserService
+@inject AuctionService AuctionService
+@inject MailSenderService MailSenderService
+
+<div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Торги за лот: @Auction.Item.Name</h5>
+                <button @onclick="Close" type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="vaadin--close"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-group-flush bids-list">
+                    @if (Auction.Bids.Count < 1)
+                    {
+                        <li class="list-group-item list-group-item-secondary">На этот лот пока никто не претендует, но вы можете стать первым!</li>
+                    }
+
+                    @foreach (var bid in Auction.Bids.AsEnumerable().Reverse())
+                    {
+                        <li class="list-group-item">Пользователь <span class="tangerine">@@</span> @bid.Bidder.Username выкупает лот за @bid.Amount</li>
+                    }
+
+                </ul>
+            </div>
+            <div class="modal-footer">                
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <input @bind-value="_bid" type="number" min="@(Auction.Item.CurrentPrice + (decimal)1)" max="5000" class="form-control" id="inlineFormInputGroup" placeholder="Сделать ставку" style="min-width: 200px;">
+                        <div class="input-group-prepend">
+                            <button @onclick="PlaceBid" type="button" class="btn btn-warning">
+                                <span class="streamline--justice-hammer-solid"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Auction Auction { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private decimal _bid = 0;
+
+    protected override void OnInitialized()
+    {
+        _bid = Auction.Item.CurrentPrice + (decimal)1;
+    }
+
+    public void PlaceBid()
+    {
+        Auction.PlaceBid(UserService.GetCurrentUser(), _bid);
+
+        if (Auction.Bids.Count > 1 && Auction.Bids[Auction.Bids.Count - 2].Bidder.Id != Auction.Bids[Auction.Bids.Count - 1].Bidder.Id)
+            SendMail(Auction.Bids[Auction.Bids.Count - 2].Bidder.Email);
+
+        Close();
+    }
+
+    public void Close()
+    {
+        OnClose.InvokeAsync();
+    }
+
+    private async void SendMail(string mail)
+    {
+        await MailSenderService.SendEmail(mail,
+            "Ваша ставка была перебита",
+            $"Пользователь @{Auction.Bids.Last().Bidder.Username} выкупает вашу ставку на лот {Auction.Item.Name} за {Auction.Item.CurrentPrice}");
+    }
+}
+

@@ -1,0 +1,104 @@
+﻿@inject UserService UserService
+@inject GeneratorStub GeneratorStub
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+                <button @onclick="Close" type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="vaadin--close"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input @bind-value="_authModel.Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@mail.com">
+                </div>
+                <div class="form-group">
+                    <input @bind-value="_authModel.Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+                </div>
+                @if (_regMode)
+                {
+                    <div class="form-group">
+                        <input @bind-value="_authModel.ConfirmPassword" type="password" class="form-control" id="exampleInputPassword2" placeholder="Повторите пароль">
+                    </div>
+                }
+                <small id="regHelp" class="form-text text-muted" style="color: red !important;">
+                    @_errorMessage
+                </small>
+                <small @onclick="ChangeRegForm" id="regHelp" class="form-text text-muted reg-help">
+                    @(_regMode ? "У меня уже есть аккаунт" : "У меня нет аккаунта")
+                </small>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="Close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button @onclick="Authorization" type="button" class="btn tangerine-btn-fill">Войти</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private string _errorMessage;
+    private bool _regMode = false;
+    private AuthModel _authModel = new AuthModel();
+
+    public void ChangeRegForm()
+    {
+        _regMode = !_regMode;
+    }
+
+    public async void Close()
+    {
+        await OnClose.InvokeAsync();
+    }
+
+    public void Authorization()
+    {
+        if (_regMode)
+            HandleRegistration();
+        else
+            HandleLogin();
+    }
+
+    private void HandleLogin()
+    {
+        var success = UserService.Login(_authModel.Email, _authModel.Password);
+        if (success)
+        {
+            Close();
+        }
+        else
+        {
+            _errorMessage = "Почта или пароль введены неверно.";
+        }
+    }
+
+    private void HandleRegistration()
+    {
+        if (_authModel.Password != _authModel.ConfirmPassword)
+        {
+            _errorMessage = "Пароли не совпадают.";
+            return;
+        }
+
+        var success = UserService.Register(_authModel.Email, _authModel.Password);
+        if (success)
+        {
+            Close();
+        }
+        else
+        {
+            _errorMessage = "Пользователь с такой почтой уже зарегистрирован.";
+        }
+    }
+
+    public class AuthModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
+    }
+}
+

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/tangerineAuction.blazor.server.props" />
+</Project>

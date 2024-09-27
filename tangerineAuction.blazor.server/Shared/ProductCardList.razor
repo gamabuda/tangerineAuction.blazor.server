@@ -1,0 +1,26 @@
+﻿@inject AuctionService AuctionService
+
+<ProgressComponent/>
+
+<div class="container">
+    <div class="row">
+        @foreach (var a in AuctionService.GetActiveAuctions())
+        {
+            <div class="col-md-4">
+                <ProductCard Auction="a" OnCardClick="CardClick" />
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public EventCallback<Auction> OnCardClick { get; set; }
+
+    public void CardClick(Auction auction)
+    {
+        OnCardClick.InvokeAsync(auction);
+    }
+}
+

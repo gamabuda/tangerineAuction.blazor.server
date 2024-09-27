@@ -1,0 +1,33 @@
+﻿@inject UserService UserService
+
+<div class="card mb-2" style="width: 20rem;">
+    <img src="@Auction.Item.Image" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@Auction.Item.Name</h5>
+        <p class="card-text">@Auction.Item.Description</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Стартовая ставка: @Auction.Item.StartingPrice</li>
+        <li class="list-group-item">Текущая ставка: @Auction.Item.CurrentPrice</li>
+        <li class="list-group-item">Лот активен до:<br /> @Auction.Item.EndTime</li>
+    </ul>
+    <div class="card-body">
+        <button disabled="@String.IsNullOrEmpty(UserService.CurrentUserEmail)" @onclick="PlaceBid" class="btn tangerine-btn" title="Вы должны быть авторизованы, чтобы сделать ставку">
+            Сделать ставку
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Auction Auction { get; set; }
+    [Parameter] public EventCallback<Auction> OnCardClick { get; set; }
+
+    public void PlaceBid()
+    {
+        if (!UserService.IsLoggedIn)
+            return;
+
+        OnCardClick.InvokeAsync(Auction);
+    }
+}
+

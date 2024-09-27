@@ -1,0 +1,39 @@
+﻿@inject UserService UserService
+ 
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand">
+        <span class="tangerine">M</span>андаринка
+    </a>
+    <div class="form-inline">
+        @if (UserService.GetCurrentUser() == null)
+        {
+            <button @onclick="OpenModal" class="btn tangerine-btn my-2 my-sm-0" type="submit">Войти</button>
+        }
+        else
+        {
+            <div class="d-flex">
+                <span class="navbar-brand">
+                    <span class="tangerine">@@</span>
+                    @UserService.GetCurrentUser().Username
+                </span>
+               
+                <button @onclick="LogOut" class="btn tangerine-btn my-2 my-sm-0" type="submit">Выйти</button>
+            </div>
+        }
+    </div>
+</nav>
+
+@code {
+    [Parameter] public EventCallback OpenAuthModal { get; set; }
+
+    public async void OpenModal()
+    {
+        await OpenAuthModal.InvokeAsync();
+    }
+
+    public void LogOut()
+    {
+        UserService.Logout();
+    }
+}
+
